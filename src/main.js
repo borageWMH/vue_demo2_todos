@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import App from './App.vue'
+import App from './components/app.vue'
 
 // 创建Vue实例对象
 /*
