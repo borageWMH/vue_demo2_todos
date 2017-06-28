@@ -4,9 +4,8 @@
      <div class="todo-container">
        <div class="todo-wrap">
          <demo_header></demo_header>
-         <list></list>
+         <list :todos="todos"></list>
         <demo_footer></demo_footer>
-
        </div>
      </div>
    </div>
@@ -18,6 +17,15 @@
   import header from  "./header.vue"
   import list from "./list.vue"
   export default{
+      data () {
+         return{
+           todos : [
+             {name: "吃饭" , complete : false},
+             {name: "睡觉" , complete : true},
+             {name: "敲代码" , complete : false}
+           ]
+         }
+      },
       components : {
           "demo_header" : header,
             list,
