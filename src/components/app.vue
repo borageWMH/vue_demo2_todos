@@ -5,7 +5,7 @@
        <div class="todo-wrap">
          <demo_header :add="add"></demo_header>
          <list :todos="todos" :remove="remove"></list>
-        <demo_footer :todos="todos" :remove-selected="removeSelected"></demo_footer>
+        <demo_footer :todos="todos" :remove-selected="removeSelected" :remove-all-selected="removeAllSelected"></demo_footer>
        </div>
      </div>
    </div>
@@ -40,7 +40,13 @@
           },
           removeSelected(){
              this.todos =  this.todos.filter(todo => !todo.complete)
+          },
+      removeAllSelected (isCheck) {
+            this.todos.forEach(todo => {
+              todo.complete = isCheck
+            })
           }
+
     }
   }
 </script>

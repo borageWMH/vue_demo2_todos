@@ -2,7 +2,8 @@
   <div>
     <div class="todo-footer">
       <label>
-        <input type="checkbox"/>
+        <input type="checkbox" v-model="allComplete"/>
+        <!--  v-model="allComplete"  这个属性和input 里面的checkbox 的值是一一对应的 -->
       </label>
       <span>
           <span>已完成{{completeSize}}</span> / 全部{{this.todos.length}}
@@ -14,7 +15,7 @@
 
 <script>
  export default{
-     props :['todos','removeSelected'],
+     props :['todos','removeSelected','removeAllSelected'],
     data(){
          return{
 
@@ -35,7 +36,17 @@
      completeSize(){
         return this.todos.reduce((preTotal,todo) =>{
             return preTotal + (todo.complete ? 1 : 0)
+            // 最后 遍历的元素返回的结果就是reduce( ) 的返回值
         },0)
+     },
+
+     allComplete : {
+         get (){
+             return this.completeSize === this.todos.length && this.completeSize != 0
+         },
+         set (value){
+           this.removeAllSelected(value)
+         }
      }
    }
  }
