@@ -1,7 +1,7 @@
 <template>
    <div>
      <ul class="todo-main">
-        <item v-for="(todo,index) in todos" :todo="todo" :key="index"></item>
+        <item v-for="(todo,index) in todos" :todo="todo" :key="index" :remove="remove"></item>
      </ul>
    </div>
 </template>
@@ -9,7 +9,7 @@
 <script>
   import item from "./item.vue"
  export default{
-     props: ['todos'],
+     props: ['todos','remove'],
       components :{
         item
       }

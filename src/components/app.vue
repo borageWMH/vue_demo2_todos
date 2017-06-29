@@ -3,8 +3,8 @@
    <div id="root">
      <div class="todo-container">
        <div class="todo-wrap">
-         <demo_header></demo_header>
-         <list :todos="todos"></list>
+         <demo_header :add="add"></demo_header>
+         <list :todos="todos" :remove="remove"></list>
         <demo_footer></demo_footer>
        </div>
      </div>
@@ -30,7 +30,15 @@
           "demo_header" : header,
             list,
           "demo_footer" : footer
-      }
+      },
+    methods :{
+          add(todo){
+            this.todos.unshift(todo)
+          },
+          remove (index) {
+            this.todos.splice(index, 1)
+          }
+    }
   }
 </script>
 
