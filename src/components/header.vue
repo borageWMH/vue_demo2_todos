@@ -22,7 +22,7 @@
      },
    methods :{
      addToDo(){
-         console.log(this.inputToDo);
+         //console.log(this.inputToDo);
          // 先对输入框的内容进行判断
           if (!this.inputToDo.trim()){
               this.inputToDo = ''

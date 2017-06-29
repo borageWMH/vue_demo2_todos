@@ -27,7 +27,7 @@
    methods :{
       show(isShow){
           this.isShow = isShow
-          this.bgColor = isShow ? "#bcf8ff" : "white"
+          this.bgColor = isShow ? "#b9b9b9" : "white"
       },
      removeToDo(index){
        if(confirm(`你确认删除 ${this.todo.name} 吗？`)){

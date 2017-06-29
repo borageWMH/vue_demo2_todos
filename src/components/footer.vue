@@ -5,15 +5,40 @@
         <input type="checkbox"/>
       </label>
       <span>
-          <span>已完成0</span> / 全部2
+          <span>已完成{{completeSize}}</span> / 全部{{this.todos.length}}
         </span>
-      <button class="btn btn-danger">清除已完成任务</button>
+      <button class="btn btn-danger" @click="removeCompleted">清除已完成任务</button>
     </div>
   </div>
 </template>
 
 <script>
+ export default{
+     props :['todos','removeSelected'],
+    data(){
+         return{
 
+         }
+    },
+   methods :{
+     removeCompleted(){
+         let completed = this.todos.filter(todo => todo.complete)
+         for (let i = 0; i < completed.length; i++) {
+          let name = completed[i].name;
+           if(confirm("是否确认删除 " + name +  " 这个已完成的任务吗？")){
+             this.removeSelected()
+           }
+       }
+     }
+   },
+   computed :{
+     completeSize(){
+        return this.todos.reduce((preTotal,todo) =>{
+            return preTotal + (todo.complete ? 1 : 0)
+        },0)
+     }
+   }
+ }
 </script>
 
 <style>

@@ -5,7 +5,7 @@
        <div class="todo-wrap">
          <demo_header :add="add"></demo_header>
          <list :todos="todos" :remove="remove"></list>
-        <demo_footer></demo_footer>
+        <demo_footer :todos="todos" :remove-selected="removeSelected"></demo_footer>
        </div>
      </div>
    </div>
@@ -37,6 +37,9 @@
           },
           remove (index) {
             this.todos.splice(index, 1)
+          },
+          removeSelected(){
+             this.todos =  this.todos.filter(todo => !todo.complete)
           }
     }
   }
