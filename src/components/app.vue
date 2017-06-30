@@ -16,13 +16,14 @@
   import footer from "./footer.vue"
   import header from  "./header.vue"
   import list from "./list.vue"
+  import storageUtils from "../util/localStorageUtils"
   export default{
       data () {
          return{
            todos : [
-             {name: "吃饭" , complete : false},
+             /*{name: "吃饭" , complete : false},
              {name: "睡觉" , complete : true},
-             {name: "敲代码" , complete : false}
+             {name: "敲代码" , complete : false}*/
            ]
          }
       },
@@ -31,6 +32,20 @@
             list,
           "demo_footer" : footer
       },
+    created(){
+      setTimeout(() =>{
+        this.todos = storageUtils.readTodos()
+      })
+    },
+    watch :{
+      todos :{
+        deep: true,
+        /*    handler(newToDo){
+         storageUtils.saveTodos(newToDo)
+         }*/
+        handler : storageUtils.saveTodos
+      }
+    },
     methods :{
           add(todo){
             this.todos.unshift(todo)
